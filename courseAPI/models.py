@@ -5,3 +5,6 @@ class CourseAPI(models.Model):
     courseid = models.CharField(max_length=10)
     name = models.CharField(max_length=100)
     url = models.URLField()
+
+    def __str__(self):
+        return self.courseid

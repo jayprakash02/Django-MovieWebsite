@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'courseAPI.apps.CourseapiConfig',
+    'movieAPI.apps.MovieapiConfig',
     'rest_framework',
 ]
 
