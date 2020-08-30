@@ -1,2 +1,2 @@
-web: gunicorn CMS.wsgi
+web: gunicorn hub.wsgi
 manage.py migrate
