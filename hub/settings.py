@@ -23,9 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'g+&))y-p=@xwcmf##%n&b7*86vfv3_17)fq1#-_2qt4q)y860_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*','127.0.0.1']
+
 
 
 # Application definition
@@ -45,6 +46,9 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -52,7 +56,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 ROOT_URLCONF = 'hub.urls'
 
 TEMPLATES = [
@@ -77,11 +80,11 @@ WSGI_APPLICATION = 'hub.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+import dj_database_url
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default':  dj_database_url.config(
+        default='postgres://ptgvkmcczfxffc:df75b9c8d3d127bd043937943517e74f55c762a919ddecbcbc60e9cba1c50cdd@ec2-52-200-48-116.compute-1.amazonaws.com:5432/d68b2n5m78euu4'
+    )   
 }
 
 
@@ -121,4 +124,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+
+COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
+
+STATIC_ROOT= os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL = '/static/'
+STATICFILES_DIRS =[
+        os.path.join(BASE_DIR,'main/static'),
+] 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
