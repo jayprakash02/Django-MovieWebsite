@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'hub.wsgi.application'
 import dj_database_url
 DATABASES = {
     'default':  dj_database_url.config(
-        default='postgres://ptgvkmcczfxffc:df75b9c8d3d127bd043937943517e74f55c762a919ddecbcbc60e9cba1c50cdd@ec2-52-200-48-116.compute-1.amazonaws.com:5432/d68b2n5m78euu4'
+        default='postgres://egbwtxrweejhvo:3da1a4463767a057284f5aed874406dd70552541b1d3c3f7c773f3efc13ca75e@ec2-52-23-86-208.compute-1.amazonaws.com:5432/d969sgcit7psdd'
     )   
 }
 
