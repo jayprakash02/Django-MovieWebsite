@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'g+&))y-p=@xwcmf##%n&b7*86vfv3_17)fq1#-_2qt4q)y860_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*','hubofjp.herokuapp.com','127.0.0.1']
 
@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    'courseAPI.apps.CourseapiConfig',
-    'movieAPI.apps.MovieapiConfig',
+#    'courseAPI.apps.CourseapiConfig',
+#    'movieAPI.apps.MovieapiConfig',
+    'loginview.apps.LoginviewConfig',
     'rest_framework',
 ]
 
@@ -61,7 +62,9 @@ ROOT_URLCONF = 'hub.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR + '/hub/templates/',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
