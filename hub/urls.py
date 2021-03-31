@@ -1,9 +1,10 @@
 from django.contrib import admin
-from django.urls import path , include
+from django.urls import path,include
+
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('dradmin/', admin.site.urls),
-    #path('course/', include('courseAPI.urls'),name="course"),
-    #path('movies/', include('movieAPI.urls'),name="movies"),
-    # path('login/', include('loginview.urls')),
-]
+    path('admin/', admin.site.urls),
+    path('',include('api.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
